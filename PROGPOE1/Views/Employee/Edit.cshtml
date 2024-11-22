@@ -1,0 +1,64 @@
+﻿@model PROG6212POE.Models.EmployeeViewModel
+
+<div class="container mt-5">
+    <h2>Edit Employee</h2>
+
+    @if (TempData["errorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["errorMessage"]
+        </div>
+    }
+
+    <form method="post" asp-action="Edit">
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="Status" />
+
+        <div class="form-group mb-3">
+            <label asp-for="FirstName" class="control-label"></label>
+            <input asp-for="FirstName" class="form-control" />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="LastName" class="control-label"></label>
+            <input asp-for="LastName" class="form-control" />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="DateOfBirth" class="control-label"></label>
+            <input asp-for="DateOfBirth" class="form-control" type="date" />
+            <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="Email" class="control-label"></label>
+            <input asp-for="Email" class="form-control" type="email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="HoursWorked" class="control-label"></label>
+            <input asp-for="HoursWorked" class="form-control" type="number" step="0.01" />
+            <span asp-validation-for="HoursWorked" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="HourlyRate" class="control-label"></label>
+            <input asp-for="HourlyRate" class="form-control" type="number" step="0.01" />
+            <span asp-validation-for="HourlyRate" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

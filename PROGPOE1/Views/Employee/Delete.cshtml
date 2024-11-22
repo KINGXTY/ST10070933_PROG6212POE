@@ -1,0 +1,38 @@
+﻿@model PROG6212POE.Models.EmployeeViewModel
+
+@{
+    ViewData["Title"] = "Delete Employee";
+}
+<h3>@ViewData["Title"]</h3>
+<hr />
+<form action="Delete" method="post">
+    <div class="mb-3">
+        <label class="form-label"> Id</label>
+        <input type="text" class="form-control" asp-for="Id" readonly />
+    </div>
+    <div class="mb-3">
+        <label class="form-label"> First Name</label>
+        <input type="text" class="form-control" asp-for="FirstName" readonly />
+    </div>
+    <div class="mb-3">
+        <label class="form-label"> Last Name</label>
+        <input type="text" class="form-control" asp-for="LastName" readonly />
+    </div>
+    <div class="mb-3">
+        <label class="form-label"> Date Of Birth</label>
+        <input type="date" class="form-control" asp-for="DateOfBirth" readonly />
+    </div>
+    <div class="mb-3">
+        <label class="form-label"> E-Mail</label>
+        <input type="email" class="form-control" asp-for="Email" readonly />
+    </div>
+    <div class="mb-3">
+        <label class="form-label"> Salary</label>
+        <input type="text" class="form-control" asp-for="Salary" readonly />
+    </div>
+    <div>
+        <div vlass="d-grid">
+            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this employee entry @Model.FullName')">Delete</button>
+        </div>
+    </div>
+</form>

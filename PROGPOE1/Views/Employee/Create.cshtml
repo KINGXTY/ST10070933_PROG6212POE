@@ -1,0 +1,65 @@
+﻿@model PROG6212POE.Models.EmployeeViewModel
+
+@{
+    ViewData["Title"] = "Create Employee";
+    var errorMessage = TempData["errorMessage"]?.ToString();
+}
+
+<h3>@ViewData["Title"]</h3>
+<hr />
+@if (!string.IsNullOrWhiteSpace(errorMessage))
+{
+    <div class="alert alert-danger">
+        <strong>Error! </strong>@errorMessage
+        <button type="button" class="btn-close float-end" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+<form action="Create" method="post" autocomplete="off">
+    <div class="mb-3">
+        <label class="form-label">First Name</label>
+        <input type="text" class="form-control" asp-for="FirstName" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Last Name</label>
+        <input type="text" class="form-control" asp-for="LastName" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Date Of Birth</label>
+        <input type="date" class="form-control" asp-for="DateOfBirth" />
+        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">E-mail</label>
+        <input type="email" class="form-control" asp-for="Email" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Hours Worked</label>
+        <input type="number" class="form-control" asp-for="HoursWorked" />
+        <span asp-validation-for="HoursWorked" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Hourly Rate</label>
+        <input type="number" class="form-control" asp-for="HourlyRate" />
+        <span asp-validation-for="HourlyRate" class="text-danger"></span>
+    </div>
+   
+    
+    <div class="mb-3">
+        <label class="form-label">Upload Document</label>
+        <input type="file" class="form-control" asp-for="FileUpload" accept=".pdf,.doc,.docx" />
+    </div>
+
+    <div class="d-grid">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
